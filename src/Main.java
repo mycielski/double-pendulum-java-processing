@@ -13,7 +13,7 @@ public class Main extends PApplet {
     float w1 = 0, w2 = 0;   // initial velocities of the pendulums' pendants
     float e1 = 0, e2 = 0;   // initial accelerations of the pendulums' pendants
 
-    final float G = 0.981f;      // gravity constant
+    final float G = 0.981f; // gravitational acceleration
 
     /**
      * Main method.
