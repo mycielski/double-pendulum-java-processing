@@ -39,16 +39,11 @@ public class Main extends PApplet {
     }
 
     /**
-     * Setup method. Used only to specify the (0, 0) point on the canvas, its color and its size.
+     * Setup method. Used only to specify the (0, 0) point's offset.
      */
     public void setup() {
         xOffset = width / 2;
         yOffset = height / 2; // the pendulum will have its origin in the center of the window
-
-        canvas = createGraphics(width, height);
-        canvas.beginDraw();
-        canvas.background(255); // white background
-        canvas.endDraw();
     }
 
     /**
@@ -97,7 +92,7 @@ public class Main extends PApplet {
         float x2 = x1 + r2 * sin(theta2);
         float y2 = y1 + r2 * cos(theta2);
 
-        // Move the (0, 0) point to the center of the window
+        // Apply the (0, 0) point's offset calculated in setup()
         translate(xOffset, yOffset);
 
         // Set the background to be white, the drawing to be black and its lines 3px wide.
