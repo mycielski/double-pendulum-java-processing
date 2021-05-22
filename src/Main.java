@@ -35,7 +35,7 @@ public class Main extends PApplet {
         //m2 = m1;
         m2 = random(10, 50);
         theta1 = random(PI / 2, 3 * PI / 2);
-        theta2 = random(2 * PI);
+        theta2 = random(PI / 2, 3 * PI / 2);
     }
 
     /**
