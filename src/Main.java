@@ -1,13 +1,14 @@
 /*
-         ▄
-         \\    ()..
+        _
+        \\
+         \\    ⬤..
      :    \\  //   :
       :..  \\//     :
-         :..()
+         :..⬤
 
-Double pendulum in Java, rendered in Processing.
-
+Double pendulum in Java, rendered with Processing library.
  */
+
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
@@ -23,7 +24,7 @@ public class Main extends PApplet {
     float w1 = 0, w2 = 0;   // initial velocities of the pendulums' pendants
     float e1 = 0, e2 = 0;   // initial accelerations of the pendulums' pendants
 
-    final float G = 0.981f; // gravitational acceleration
+    final float G = 0.64f;  // gravitational acceleration; decrease to give the pendulum a "slow motion" appearance
 
     /**
      * Main method.
@@ -38,22 +39,22 @@ public class Main extends PApplet {
      * Settings method. Used to set the size of the window and assign random initial values to pendulum's variables.
      */
     public void settings() {
-        size(1000, 1000); // size of window
+        size(900, 900); // size of window
         r1 = random(100, 200);
         r2 = random(100, 200);
         m1 = random(10, 50);
-        //m2 = m1;
         m2 = random(10, 50);
-        theta1 = random(PI / 2, 3 * PI / 2);
-        theta2 = random(PI / 2, 3 * PI / 2);
+        //m2 = m1;
+        theta1 = random(PI / 2, 3 * PI / 2); // 1st pendulum always starts in the upper half of its circle
+        theta2 = random(PI / 2, 3 * PI / 2); // 2nd pendulum always starts in the upper half of its circle
     }
 
     /**
-     * Setup method. Used only to specify the (0, 0) point's offset.
+     * Setup method. Used only to specify the (0, 0) point's offset on the drawing canvas.
      */
     public void setup() {
         xOffset = width / 2;
-        yOffset = height / 2; // the (0, 0) will be in the center of the window
+        yOffset = height / 2;
     }
 
     /**
@@ -85,15 +86,15 @@ public class Main extends PApplet {
         denominator = r2 * (2 * m1 + m2 - m2 * cos(2 * theta1 - 2 * theta2));
         float e2 = (factor1 * (factor2 + factor3 + factor4)) / denominator;
 
-        // Update angular velocity of the pendulums
+        // Update angular velocity of the pendulums by adding the calculated accelerations
         w1 += e1;
         w2 += e2;
 
-        // Dampening (optional)
-        w1 = 0.9999f * w1;
-        w2 = 0.9999f * w2;
+        // Dampening; use to crudely simulate loss of energy due to friction, air resistance, etc.
+        w1 = 0.999999f * w1;
+        w2 = 0.999999f * w2;
 
-        // Update the angles of the pendulums
+        // Update the angles of the pendulums by adding the calculated velocities
         theta1 += w1;
         theta2 += w2;
 
