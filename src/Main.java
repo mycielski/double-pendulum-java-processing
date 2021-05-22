@@ -4,7 +4,7 @@ import processing.core.PGraphics;
 public class Main extends PApplet {
 
     PGraphics canvas;       // canvas on which the pendulum is to be drawn
-    float xOffset, yOffset; // offsets the (0, 0) point so that the whole pendulum can fit in the window
+    float xOffset, yOffset; // offset of the (0, 0) point on the canvas from top left corner
 
     float r1, r2;           // radii of the pendulums
     float m1, m2;           // masses of the pendulums
