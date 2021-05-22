@@ -1,3 +1,13 @@
+/*
+         ▄
+         \\    ()..
+     :    \\  //   :
+      :..  \\//     :
+         :..()
+
+Double pendulum in Java, rendered in Processing.
+
+ */
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
@@ -43,7 +53,7 @@ public class Main extends PApplet {
      */
     public void setup() {
         xOffset = width / 2;
-        yOffset = height / 2; // the pendulum will have its origin in the center of the window
+        yOffset = height / 2; // the (0, 0) will be in the center of the window
     }
 
     /**
@@ -51,8 +61,11 @@ public class Main extends PApplet {
      */
     public void draw() {
 
-        // Calculating angular accelerations in one step, like below, is too fast for processing's renderer.
-        // Due to that, the program is slowed down by performing the necessary calculation in multiple steps.
+        /*
+        Calculating angular accelerations in one line of code is too fast for Processing's renderer.
+        While the delays from splitting declarations and calculations are miniscule, they are quite sufficient for the
+        renderer to "catch up".
+        For clarity's sake the one-line equations of motion are left commented in the two lines below. */
         // e1 = (-G * (2 * m1 + m2) * sin(theta1) - m2 * G * sin(theta1 - 2 * theta2) - 2 * sin(theta1 - theta2) * m2 * (w2 * w2 * r2 + w1 * w1 * r1 * cos(theta1 - theta2))) / (r1 * (2 * m1 + m2 - m2 * cos(2 * theta1 - 2 * theta2)));
         // e2 = (2 * sin(theta1 - theta2) * (w1 * w1 * r1 * (m1 + m2) + G * (m1 + m2) * cos(theta1) + w2 * w2 + r2 * m2 * cos(theta1 - theta2))) / (r2 * (2 * m1 + m2 - m2 * cos(2 * theta1 - 2 * theta2)));
 
