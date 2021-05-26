@@ -91,8 +91,8 @@ public class Main extends PApplet {
         w2 += e2;
 
         // Dampening; use to crudely simulate loss of energy due to friction, air resistance, etc.
-        w1 = 0.999999f * w1;
-        w2 = 0.999999f * w2;
+        w1 = 0.9999f * w1;
+        w2 = 0.9999f * w2;
 
         // Update the angles of the pendulums by adding the calculated velocities
         theta1 += w1;
